@@ -1,0 +1,1 @@
+Starter raffle slot machine. Replace entrantNames and ticketCounts in script.js with Glide values.

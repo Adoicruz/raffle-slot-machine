@@ -1,1 +1,65 @@
-<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"></head><body><div class="wrap"><h1>🎉 DRAWING WINNER</h1><div id="reel" class="reel"></div><button id="draw">Draw Winner</button><h2 id="winner"></h2><script src="script.js"></script></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Raffle Draw</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="background-glow"></div>
+
+<div class="container">
+
+    <div class="logo-area">
+        <h3>✨ Luxury Raffle</h3>
+        <h1>DRAWING WINNER</h1>
+    </div>
+
+    <div class="slot-window">
+
+        <div class="fade-top"></div>
+
+        <div id="reel" class="reel">
+
+            <!-- Filled by JavaScript -->
+
+        </div>
+
+        <div class="center-line"></div>
+
+        <div class="fade-bottom"></div>
+
+    </div>
+
+    <button id="drawButton">
+        DRAW WINNER
+    </button>
+
+</div>
+
+<div id="winnerModal" class="winner-modal">
+
+    <div class="winner-card">
+
+        <h2>🏆 WINNER</h2>
+
+        <h1 id="winnerName"></h1>
+
+        <button id="closeWinner">
+            CLOSE
+        </button>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

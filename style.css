@@ -1,1 +1,278 @@
-body{margin:0;background:#111;color:#fff;font-family:Arial;display:grid;place-items:center;height:100vh}.wrap{text-align:center;width:min(420px,90vw)}.reel{height:160px;overflow:hidden;border:2px solid gold;border-radius:10px;background:#222;padding:10px}.name{padding:8px;font-size:26px;opacity:.4}.active{opacity:1;color:gold;font-weight:bold}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0f0f10;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+}
+
+.background-glow {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at top, rgba(255,215,0,.12), transparent 55%),
+        radial-gradient(circle at bottom, rgba(255,215,0,.05), transparent 60%);
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    height: 100vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    padding:30px;
+}
+
+.logo-area{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.logo-area h3{
+    color:#d4af37;
+    letter-spacing:4px;
+    font-weight:500;
+    text-transform:uppercase;
+}
+
+.logo-area h1{
+    font-family:"Playfair Display", serif;
+    font-size:52px;
+    margin-top:10px;
+}
+
+.slot-window{
+
+    position:relative;
+
+    width:min(500px,90vw);
+    height:250px;
+
+    overflow:hidden;
+
+    border:2px solid #d4af37;
+
+    border-radius:20px;
+
+    background:#1a1a1a;
+
+    box-shadow:
+    0 0 25px rgba(212,175,55,.25),
+    inset 0 0 35px rgba(255,255,255,.03);
+
+}
+
+.reel{
+
+    position:absolute;
+
+    width:100%;
+
+    top:0;
+
+    left:0;
+
+}
+
+.reel-item{
+
+    height:80px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:34px;
+
+    color:#b8b8b8;
+
+    transition:.3s;
+
+}
+
+.active{
+
+    color:#FFD54A;
+
+    font-weight:bold;
+
+    transform:scale(1.08);
+
+}
+
+.center-line{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:100%;
+
+    height:80px;
+
+    border-top:2px solid rgba(255,215,0,.55);
+
+    border-bottom:2px solid rgba(255,215,0,.55);
+
+    pointer-events:none;
+
+}
+
+.fade-top{
+
+    position:absolute;
+
+    top:0;
+
+    width:100%;
+
+    height:70px;
+
+    background:linear-gradient(#1a1a1a, transparent);
+
+    z-index:5;
+
+}
+
+.fade-bottom{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;
+
+    background:linear-gradient(transparent,#1a1a1a);
+
+    z-index:5;
+
+}
+
+#drawButton{
+
+    margin-top:45px;
+
+    background:#d4af37;
+
+    color:black;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:18px 50px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+#drawButton:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:0 0 20px rgba(255,215,0,.35);
+
+}
+
+.winner-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:100;
+
+}
+
+.winner-card{
+
+    background:#191919;
+
+    border:2px solid #d4af37;
+
+    border-radius:20px;
+
+    padding:50px;
+
+    width:min(450px,90vw);
+
+    text-align:center;
+
+    animation:pop .35s ease;
+
+}
+
+.winner-card h2{
+
+    color:#FFD54A;
+
+    margin-bottom:20px;
+
+}
+
+#winnerName{
+
+    font-size:42px;
+
+    margin-bottom:30px;
+
+}
+
+#closeWinner{
+
+    background:#d4af37;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:14px 34px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+@keyframes pop{
+
+from{
+transform:scale(.7);
+opacity:0;
+}
+
+to{
+transform:scale(1);
+opacity:1;
+}
+
+}

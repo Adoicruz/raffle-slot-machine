@@ -1,1 +1,92 @@
-const entrantNames='John|||Sarah|||Mike';const ticketCounts='3|||1|||2';const names=entrantNames.split('|||');const counts=ticketCounts.split('|||').map(Number);const pool=[];names.forEach((n,i)=>{for(let j=0;j<(counts[i]||1);j++)pool.push(n)});const reel=document.getElementById('reel');const winner=document.getElementById('winner');let p=0;function drawView(){reel.innerHTML='';for(let i=-2;i<=2;i++){let d=document.createElement('div');d.className='name'+(i===0?' active':'');d.textContent=pool[(p+i+pool.length)%pool.length];reel.appendChild(d)}}drawView();document.getElementById('draw').onclick=()=>{winner.textContent='';let t=0,d=40;(function spin(){p=(p+1)%pool.length;drawView();t++;if(t<80){if(t>50)d+=6;setTimeout(spin,d)}else{winner.textContent='🏆 Winner: '+pool[Math.floor(Math.random()*pool.length)]}})()}
+// ===== Demo Data =====
+// Later these will come from Glide
+const entrants = [
+  { name: "John", tickets: 5 },
+  { name: "Sarah", tickets: 2 },
+  { name: "Mike", tickets: 1 },
+  { name: "Ashley", tickets: 4 },
+  { name: "Chris", tickets: 3 },
+];
+
+// Build weighted pool
+const weightedPool = [];
+
+entrants.forEach(person => {
+  for (let i = 0; i < person.tickets; i++) {
+    weightedPool.push(person.name);
+  }
+});
+
+const reel = document.getElementById("reel");
+const drawButton = document.getElementById("drawButton");
+const modal = document.getElementById("winnerModal");
+const winnerName = document.getElementById("winnerName");
+const closeWinner = document.getElementById("closeWinner");
+
+// Fill reel with many names
+function buildReel() {
+  reel.innerHTML = "";
+
+  for (let i = 0; i < 100; i++) {
+    const div = document.createElement("div");
+    div.className = "reel-item";
+    div.textContent =
+      weightedPool[Math.floor(Math.random() * weightedPool.length)];
+
+    reel.appendChild(div);
+  }
+}
+
+buildReel();
+
+drawButton.addEventListener("click", spin);
+
+closeWinner.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+function spin() {
+  drawButton.disabled = true;
+
+  buildReel();
+
+  const items = [...document.querySelectorAll(".reel-item")];
+
+  let offset = 0;
+  let speed = 38;
+
+  const winner =
+    weightedPool[Math.floor(Math.random() * weightedPool.length)];
+
+  const stopIndex = 80;
+
+  function animate() {
+    offset += speed;
+
+    reel.style.transform = `translateY(-${offset}px)`;
+
+    if (speed > 4) {
+      speed *= 0.985;
+    }
+
+    const current = Math.floor(offset / 80);
+
+    items.forEach(item => item.classList.remove("active"));
+
+    if (items[current + 1]) {
+      items[current + 1].classList.add("active");
+    }
+
+    if (current < stopIndex) {
+      requestAnimationFrame(animate);
+    } else {
+      winnerName.textContent = winner;
+
+      modal.style.display = "flex";
+
+      drawButton.disabled = false;
+    }
+  }
+
+  animate();
+}

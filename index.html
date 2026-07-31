@@ -1,65 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Raffle Draw</title>
+  <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="style.css">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <title>Bri's Beauty Bar Raffle Draw</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="background-glow"></div>
+  <main class="raffle-page">
 
-<div class="container">
+    <div class="brush-stroke brush-one"></div>
+    <div class="brush-stroke brush-two"></div>
+    <div class="brush-stroke brush-three"></div>
 
-    <div class="logo-area">
-        <h3>✨ Luxury Raffle</h3>
-        <h1>DRAWING WINNER</h1>
-    </div>
+    <header class="raffle-header">
 
-    <div class="slot-window">
+      <img
+        class="brand-logo"
+        src="logo.jpg"
+        alt="Bri's Beauty Bar"
+      >
 
-        <div class="fade-top"></div>
+      <h1>RAFFLE DRAW</h1>
+
+      <div class="title-divider">
+        <span></span>
+        <div class="divider-diamond">◆</div>
+        <span></span>
+      </div>
+
+      <p id="drawingText" class="drawing-text">
+        DRAWING WINNER...
+      </p>
+
+    </header>
+
+    <section class="slot-section">
+
+      <div class="slot-frame">
+
+        <div class="slot-fade slot-fade-top"></div>
 
         <div id="reel" class="reel">
-
-            <!-- Filled by JavaScript -->
-
+          <!-- Names are added by script.js -->
         </div>
 
-        <div class="center-line"></div>
+        <div class="winning-row"></div>
 
-        <div class="fade-bottom"></div>
+        <div class="slot-fade slot-fade-bottom"></div>
 
-    </div>
+      </div>
 
-    <button id="drawButton">
+      <button id="drawButton" class="draw-button">
         DRAW WINNER
-    </button>
+      </button>
 
-</div>
+    </section>
 
-<div id="winnerModal" class="winner-modal">
+    <section class="support-section">
+
+      <div class="trophy">🏆</div>
+
+      <h2>CONGRATULATIONS!</h2>
+
+      <p>YOU ARE THE WINNER</p>
+
+      <div class="small-divider">
+        <span></span>
+        <div>◆</div>
+        <span></span>
+      </div>
+
+      <div class="support-banner">
+        THANK YOU FOR YOUR SUPPORT!
+      </div>
+
+      <p class="closing-message">
+        Stay tuned for updates! ♥
+      </p>
+
+    </section>
+
+  </main>
+
+  <div id="winnerModal" class="winner-modal">
 
     <div class="winner-card">
 
-        <h2>🏆 WINNER</h2>
+      <img
+        class="winner-logo"
+        src="logo.jpg"
+        alt="Bri's Beauty Bar"
+      >
 
-        <h1 id="winnerName"></h1>
+      <p class="winner-label">
+        🏆 THE WINNER IS
+      </p>
 
-        <button id="closeWinner">
-            CLOSE
-        </button>
+      <h2 id="winnerName"></h2>
+
+      <p class="winner-message">
+        Congratulations!
+      </p>
+
+      <button id="closeWinner" class="close-button">
+        CLOSE
+      </button>
 
     </div>
 
-</div>
+  </div>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>

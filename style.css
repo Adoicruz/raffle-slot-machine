@@ -1,278 +1,375 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --background: #FAFAFA;
+  --card: #FFFFFF;
+  --border: #DCDCDC;
+  --body-text: #1C1C1C;
+  --heading: #000000;
 }
 
 body {
-    background: #0f0f10;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    overflow: hidden;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--body-text);
+  font-family: "Poppins", sans-serif;
 }
 
-.background-glow {
-    position: fixed;
-    inset: 0;
-    background:
-        radial-gradient(circle at top, rgba(255,215,0,.12), transparent 55%),
-        radial-gradient(circle at bottom, rgba(255,215,0,.05), transparent 60%);
+button {
+  font: inherit;
 }
 
-.container {
-    position: relative;
-    z-index: 2;
-    height: 100vh;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    padding:30px;
+.raffle-page {
+  position: relative;
+  width: min(760px, calc(100% - 24px));
+  min-height: calc(100vh - 24px);
+  margin: 12px auto;
+  padding: 28px 24px 38px;
+  overflow: hidden;
+  background: var(--background);
+  border: 1px solid var(--border);
 }
 
-.logo-area{
-    text-align:center;
-    margin-bottom:40px;
+.raffle-header,
+.slot-section,
+.support-section {
+  position: relative;
+  z-index: 2;
+  text-align: center;
 }
 
-.logo-area h3{
-    color:#d4af37;
-    letter-spacing:4px;
-    font-weight:500;
-    text-transform:uppercase;
+.brand-logo {
+  display: block;
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.logo-area h1{
-    font-family:"Playfair Display", serif;
-    font-size:52px;
-    margin-top:10px;
+.raffle-header h1 {
+  color: var(--heading);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(46px, 10vw, 84px);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
 }
 
-.slot-window{
-
-    position:relative;
-
-    width:min(500px,90vw);
-    height:250px;
-
-    overflow:hidden;
-
-    border:2px solid #d4af37;
-
-    border-radius:20px;
-
-    background:#1a1a1a;
-
-    box-shadow:
-    0 0 25px rgba(212,175,55,.25),
-    inset 0 0 35px rgba(255,255,255,.03);
-
+.title-divider,
+.small-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
 }
 
-.reel{
-
-    position:absolute;
-
-    width:100%;
-
-    top:0;
-
-    left:0;
-
+.title-divider {
+  margin: 28px auto 24px;
 }
 
-.reel-item{
-
-    height:80px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:34px;
-
-    color:#b8b8b8;
-
-    transition:.3s;
-
+.title-divider span {
+  width: min(220px, 31vw);
+  height: 1px;
+  background: var(--border);
 }
 
-.active{
-
-    color:#FFD54A;
-
-    font-weight:bold;
-
-    transform:scale(1.08);
-
+.divider-diamond,
+.small-divider div {
+  color: var(--border);
+  font-size: 14px;
 }
 
-.center-line{
-
-    position:absolute;
-
-    top:50%;
-
-    transform:translateY(-50%);
-
-    width:100%;
-
-    height:80px;
-
-    border-top:2px solid rgba(255,215,0,.55);
-
-    border-bottom:2px solid rgba(255,215,0,.55);
-
-    pointer-events:none;
-
+.drawing-text {
+  color: var(--heading);
+  font-size: clamp(17px, 4vw, 24px);
+  font-weight: 500;
+  letter-spacing: 0.28em;
 }
 
-.fade-top{
-
-    position:absolute;
-
-    top:0;
-
-    width:100%;
-
-    height:70px;
-
-    background:linear-gradient(#1a1a1a, transparent);
-
-    z-index:5;
-
+.slot-section {
+  margin-top: 32px;
 }
 
-.fade-bottom{
-
-    position:absolute;
-
-    bottom:0;
-
-    width:100%;
-
-    height:70px;
-
-    background:linear-gradient(transparent,#1a1a1a);
-
-    z-index:5;
-
+.slot-frame {
+  position: relative;
+  width: min(650px, 100%);
+  height: 250px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgb(0 0 0 / 7%);
 }
 
-#drawButton{
-
-    margin-top:45px;
-
-    background:#d4af37;
-
-    color:black;
-
-    border:none;
-
-    border-radius:12px;
-
-    padding:18px 50px;
-
-    font-size:18px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.25s;
-
+.reel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  will-change: transform;
 }
 
-#drawButton:hover{
-
-    transform:scale(1.05);
-
-    box-shadow:0 0 20px rgba(255,215,0,.35);
-
+.reel-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  padding: 0 24px;
+  color: #7A7A7A;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(27px, 6vw, 46px);
+  line-height: 1;
+  text-align: center;
 }
 
-.winner-modal{
-
-    position:fixed;
-
-    inset:0;
-
-    background:rgba(0,0,0,.75);
-
-    display:none;
-
-    justify-content:center;
-
-    align-items:center;
-
-    z-index:100;
-
+.reel-item.active {
+  color: var(--heading);
+  font-weight: 600;
 }
 
-.winner-card{
-
-    background:#191919;
-
-    border:2px solid #d4af37;
-
-    border-radius:20px;
-
-    padding:50px;
-
-    width:min(450px,90vw);
-
-    text-align:center;
-
-    animation:pop .35s ease;
-
+.winning-row {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 18px;
+  right: 18px;
+  height: 80px;
+  transform: translateY(-50%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  pointer-events: none;
 }
 
-.winner-card h2{
-
-    color:#FFD54A;
-
-    margin-bottom:20px;
-
+.slot-fade {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  width: 100%;
+  height: 76px;
+  pointer-events: none;
 }
 
-#winnerName{
-
-    font-size:42px;
-
-    margin-bottom:30px;
-
+.slot-fade-top {
+  top: 0;
+  background: linear-gradient(var(--card), rgb(255 255 255 / 8%));
 }
 
-#closeWinner{
-
-    background:#d4af37;
-
-    border:none;
-
-    border-radius:10px;
-
-    padding:14px 34px;
-
-    cursor:pointer;
-
-    font-weight:bold;
-
+.slot-fade-bottom {
+  bottom: 0;
+  background: linear-gradient(rgb(255 255 255 / 8%), var(--card));
 }
 
-@keyframes pop{
-
-from{
-transform:scale(.7);
-opacity:0;
+.draw-button,
+.close-button {
+  border: 1px solid var(--heading);
+  background: var(--heading);
+  color: var(--card);
+  cursor: pointer;
+  font-weight: 500;
+  letter-spacing: 0.18em;
 }
 
-to{
-transform:scale(1);
-opacity:1;
+.draw-button {
+  margin-top: 24px;
+  padding: 15px 30px;
+  min-width: min(310px, 100%);
+  border-radius: 2px;
 }
 
+.draw-button:disabled {
+  cursor: wait;
+  opacity: 0.45;
+}
+
+.support-section {
+  margin-top: 42px;
+}
+
+.trophy {
+  color: var(--heading);
+  font-size: 34px;
+  filter: grayscale(1);
+}
+
+.support-section h2 {
+  margin-top: 12px;
+  color: var(--heading);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(34px, 7vw, 52px);
+  font-weight: 500;
+}
+
+.support-section > p:not(.closing-message) {
+  margin-top: 7px;
+  color: var(--heading);
+  font-size: 14px;
+  letter-spacing: 0.25em;
+}
+
+.small-divider {
+  margin: 24px auto;
+}
+
+.small-divider span {
+  width: 90px;
+  height: 1px;
+  background: var(--border);
+}
+
+.support-banner {
+  display: inline-block;
+  max-width: 100%;
+  padding: 13px 28px;
+  background: var(--heading);
+  color: var(--card);
+  border: 1px solid var(--heading);
+  font-size: 14px;
+  letter-spacing: 0.22em;
+}
+
+.closing-message {
+  margin-top: 24px;
+  color: var(--heading);
+  font-family: "Playfair Display", serif;
+  font-size: 21px;
+  font-style: italic;
+}
+
+.brush-stroke {
+  position: absolute;
+  z-index: 1;
+  width: 230px;
+  height: 70px;
+  opacity: 0.48;
+  transform: rotate(-12deg);
+  background:
+    linear-gradient(
+      170deg,
+      transparent 15%,
+      var(--border) 17%,
+      transparent 24%,
+      var(--border) 31%,
+      transparent 39%,
+      var(--border) 47%,
+      transparent 55%
+    );
+  filter: blur(0.4px);
+}
+
+.brush-one {
+  top: 175px;
+  left: -70px;
+}
+
+.brush-two {
+  top: 495px;
+  right: -85px;
+  transform: rotate(18deg);
+}
+
+.brush-three {
+  bottom: 115px;
+  left: -75px;
+  transform: rotate(-18deg);
+}
+
+.winner-modal {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgb(250 250 250 / 94%);
+}
+
+.winner-card {
+  width: min(500px, 100%);
+  padding: 30px;
+  text-align: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 50px rgb(0 0 0 / 10%);
+  animation: winnerReveal 420ms ease both;
+}
+
+.winner-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.winner-label {
+  margin-top: 20px;
+  color: var(--body-text);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+}
+
+#winnerName {
+  margin-top: 14px;
+  color: var(--heading);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(43px, 10vw, 70px);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.winner-message {
+  margin: 18px 0 24px;
+  font-size: 17px;
+}
+
+.close-button {
+  padding: 13px 28px;
+}
+
+@keyframes winnerReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 560px) {
+  .raffle-page {
+    width: calc(100% - 12px);
+    min-height: calc(100vh - 12px);
+    margin: 6px auto;
+    padding: 22px 16px 30px;
+  }
+
+  .brand-logo {
+    width: 130px;
+    height: 130px;
+  }
+
+  .drawing-text {
+    letter-spacing: 0.18em;
+  }
+
+  .slot-frame {
+    height: 230px;
+    border-radius: 14px;
+  }
+
+  .support-banner {
+    padding: 12px 15px;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+  }
 }
